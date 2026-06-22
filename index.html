@@ -974,6 +974,7 @@
           <p class="booking-card-desc">Our expert visits your home, measures every window, shows curated fabrics, generates a 3D preview and gives you one all-inclusive quote — on the spot. No obligation.</p>
 
           <form class="bform" onsubmit="handleSubmit(event)">
+            <!-- Hidden UTM tracking fields -->
             <input type="hidden" name="utm_source"   id="utm_source" />
             <input type="hidden" name="utm_medium"   id="utm_medium" />
             <input type="hidden" name="utm_campaign" id="utm_campaign" />
@@ -981,32 +982,37 @@
             <input type="hidden" name="utm_content"  id="utm_content" />
             <input type="hidden" name="landing_page" id="landing_page" />
             <input type="hidden" name="referrer"     id="referrer" />
+
             <div class="bfield">
               <label>Full Name</label>
-              <input type="text" placeholder="Rahul Sharma" required />
+              <input type="text" name="fullname" placeholder="Rahul Sharma" required />
             </div>
+
             <div class="bfield">
-            <label>Phone Number</label>
-            <input type="tel" name="phone" placeholder="98XXXXXXXX" required
-                  inputmode="numeric" pattern="[0-9]{10}" maxlength="10"
-                  title="Please enter a valid 10-digit mobile number"
-                  oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,10)" />
-          </div>
+              <label>Phone Number</label>
+              <input type="tel" name="phone" placeholder="98XXXXXXXX" required
+                     inputmode="numeric" pattern="[0-9]{10}" maxlength="10"
+                     title="Please enter a valid 10-digit mobile number"
+                     oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,10)" />
+            </div>
+
             <div class="bfield">
               <label>Email</label>
-              <input type="email" placeholder="you@example.com" required />
+              <input type="email" name="email" placeholder="you@example.com" required />
             </div>
+
             <div class="bfield">
               <label>Pincode</label>
-              <input type="text" inputmode="numeric" pattern="[0-9]{6}" maxlength="6"
+              <input type="text" name="pincode" inputmode="numeric" pattern="[0-9]{6}" maxlength="6"
                      title="Please enter a valid 6-digit pincode"
                      placeholder="400001" required
                      oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,6)" />
             </div>
+
             <div class="bfield">
               <label>Project Type</label>
               <div class="bselect-wrap">
-                <select>
+                <select name="project_type">
                   <option value="">Select type</option>
                   <option>New Home</option>
                   <option>Renovation</option>
