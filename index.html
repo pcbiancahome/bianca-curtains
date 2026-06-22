@@ -673,7 +673,43 @@
 .mobile-menu.open a:nth-of-type(4) { transition-delay: 0.30s; }
 .mobile-menu.open a:nth-of-type(5) { transition-delay: 0.36s; }
 .mobile-close { position: absolute; top: 1.4rem; right: 1.8rem; background: none; border: none; color: #B8960C; font-size: 1.8rem; cursor: pointer; }
-  </style>
+ 
+/* ── THANK YOU POPUP ── */
+.popup-overlay {
+  position: fixed; inset: 0; z-index: 9000;
+  background: rgba(28,21,16,0.6); backdrop-filter: blur(3px);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none; transition: opacity 0.35s var(--ease);
+  padding: 1.5rem;
+}
+.popup-overlay.open { opacity: 1; pointer-events: all; }
+.popup-box {
+  background: var(--white); max-width: 420px; width: 100%;
+  padding: 3rem 2.5rem 2.5rem; text-align: center; position: relative;
+  border-top: 4px solid var(--burgundy);
+  transform: translateY(24px) scale(0.96);
+  transition: transform 0.4s var(--ease);
+}
+.popup-overlay.open .popup-box { transform: translateY(0) scale(1); }
+.popup-close {
+  position: absolute; top: 1rem; right: 1.2rem; background: none; border: none;
+  font-size: 1.4rem; color: var(--light-stone); cursor: pointer; line-height: 1;
+}
+.popup-check {
+  width: 70px; height: 70px; border-radius: 50%; margin: 0 auto 1.4rem;
+  background: var(--gold); color: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.2rem; font-weight: 600;
+}
+.popup-title { font-family: var(--serif); font-size: 2rem; color: var(--charcoal); margin-bottom: 0.7rem; }
+.popup-text { font-size: 0.85rem; color: var(--stone); line-height: 1.8; margin-bottom: 1.8rem; }
+.popup-btn {
+  background: var(--burgundy); color: var(--white); border: none;
+  padding: 0.85rem 2.6rem; font-family: var(--sans); font-size: 0.62rem;
+  font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer;
+  transition: background 0.3s;
+}
+.popup-btn:hover { background: var(--burgundy-dk); } </style>
 </head>
 <body>
 
@@ -937,14 +973,24 @@
           <p class="booking-card-desc">Our expert visits your home, measures every window, shows curated fabrics, generates a 3D preview and gives you one all-inclusive quote — on the spot. No obligation.</p>
 
           <form class="bform" onsubmit="handleSubmit(event)">
+            <input type="hidden" name="utm_source"   id="utm_source" />
+            <input type="hidden" name="utm_medium"   id="utm_medium" />
+            <input type="hidden" name="utm_campaign" id="utm_campaign" />
+            <input type="hidden" name="utm_term"     id="utm_term" />
+            <input type="hidden" name="utm_content"  id="utm_content" />
+            <input type="hidden" name="landing_page" id="landing_page" />
+            <input type="hidden" name="referrer"     id="referrer" />
             <div class="bfield">
               <label>Full Name</label>
               <input type="text" placeholder="Rahul Sharma" required />
             </div>
             <div class="bfield">
-              <label>Phone Number</label>
-              <input type="tel" placeholder="+91 98XXXXXXXX" required />
-            </div>
+            <label>Phone Number</label>
+            <input type="tel" name="phone" placeholder="98XXXXXXXX" required
+                  inputmode="numeric" pattern="[0-9]{10}" maxlength="10"
+                  title="Please enter a valid 10-digit mobile number"
+                  oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,10)" />
+          </div>
             <div class="bfield">
               <label>Email</label>
               <input type="email" placeholder="you@example.com" required />
@@ -1098,15 +1144,40 @@
     function closeMobile() { menu.classList.remove('open'); }
 
     // --- Form submit ---
-    function handleSubmit(e) {
-      e.preventDefault();
-      const btn = e.target.querySelector('.btn-book');
-      btn.textContent = 'Booking…'; btn.disabled = true;
-      setTimeout(() => {
-        document.getElementById('form-ok').style.display = 'block';
-        btn.textContent = 'Booked ✓'; e.target.reset();
-      }, 1200);
-    }
+    // --- UTM capture: page load pe URL se UTM nikaalo aur hidden fields me bharo ---
+(function captureUTM() {
+  const params = new URLSearchParams(window.location.search);
+  const setVal = (id, val) => { const el = document.getElementById(id); if (el && val) el.value = val; };
+  setVal('utm_source',   params.get('utm_source'));
+  setVal('utm_medium',   params.get('utm_medium'));
+  setVal('utm_campaign', params.get('utm_campaign'));
+  setVal('utm_term',     params.get('utm_term'));
+  setVal('utm_content',  params.get('utm_content'));
+  setVal('landing_page', window.location.href);
+  setVal('referrer',     document.referrer || 'direct');
+})();
+
+// --- Form submit + popup ---
+function handleSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('.btn-book');
+  btn.textContent = 'Booking…'; btn.disabled = true;
+
+  // Saara data ek object me (yahaan se aap backend / Google Sheet / CRM bhej sakte ho)
+  const data = Object.fromEntries(new FormData(form).entries());
+  console.log('Lead data:', data); // utm_source etc. yahaan dikhega
+
+  setTimeout(() => {
+    showPopup();          // popup dikhao
+    form.reset();
+    btn.textContent = 'Book My Free Home Visit →';
+    btn.disabled = false;
+  }, 1200);
+}
+
+function showPopup()  { document.getElementById('thankPopup').classList.add('open'); }
+function closePopup() { document.getElementById('thankPopup').classList.remove('open'); }
 
     /* ════════════ PREMIUM ANIMATION ENGINE (per-element triggers) ════════════ */
     // Start at the top on reload so animations begin from a clean state
@@ -1267,5 +1338,15 @@
       if (statsEl) obs.observe(statsEl);
     }
   </script>
+<!-- ═══════ THANK YOU POPUP ═══════ -->
+<div class="popup-overlay" id="thankPopup">
+  <div class="popup-box">
+    <button class="popup-close" onclick="closePopup()" aria-label="Close">✕</button>
+    <div class="popup-check">✓</div>
+    <h3 class="popup-title">Thank You!</h3>
+    <p class="popup-text">Your free home visit request is received. Our team will call you within 24 hours to confirm your appointment.</p>
+    <button class="popup-btn" onclick="closePopup()">Done</button>
+  </div>
+</div>
 </body>
 </html>
