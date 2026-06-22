@@ -1164,16 +1164,30 @@ function handleSubmit(e) {
   const btn = form.querySelector('.btn-book');
   btn.textContent = 'Booking…'; btn.disabled = true;
 
-  // Saara data ek object me (yahaan se aap backend / Google Sheet / CRM bhej sakte ho)
   const data = Object.fromEntries(new FormData(form).entries());
-  console.log('Lead data:', data); // utm_source etc. yahaan dikhega
 
-  setTimeout(() => {
-    showPopup();          // popup dikhao
+  // ↓↓↓ yahaan apna Web app URL paste karo ↓↓↓
+  const SHEET_URL = 'https://script.google.com/a/macros/biancahome.com/s/AKfycbwEzAWb-m86P6uLitkfNqB3cHZottljX5nG0dnBOvPfDw5RYZtVudEts1BFz1Pb9pZQOw/exec';
+
+  fetch(SHEET_URL, {
+    method: 'POST',
+    mode: 'no-cors',                       // Google ke liye zaroori
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify(data)
+  })
+  .then(() => {
+    showPopup();
     form.reset();
     btn.textContent = 'Book My Free Home Visit →';
     btn.disabled = false;
-  }, 1200);
+  })
+  .catch(() => {
+    // network fail hua to bhi user ko popup dikha do, par phone se follow-up rakho
+    showPopup();
+    form.reset();
+    btn.textContent = 'Book My Free Home Visit →';
+    btn.disabled = false;
+  });
 }
 
 function showPopup()  { document.getElementById('thankPopup').classList.add('open'); }
