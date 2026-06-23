@@ -431,6 +431,16 @@
       * { scroll-behavior: auto !important; }
     }
 
+
+    .footer-email { display: inline-flex; align-items: center; gap: 0.55rem; font-size: 0.76rem; color: rgba(232,221,209,0.5); text-decoration: none; transition: color 0.3s; }
+.footer-email:hover { color: var(--cream); }
+.footer-email svg { color: var(--gold); flex-shrink: 0; }
+
+.footer-socials { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+.footer-socials a { width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(232,221,209,0.18); border-radius: 50%; color: rgba(232,221,209,0.6); transition: color 0.3s, border-color 0.3s, background 0.3s, transform 0.3s; }
+.footer-socials a svg { width: 15px; height: 15px; }
+.footer-socials a:hover { color: var(--charcoal); background: var(--gold); border-color: var(--gold); transform: translateY(-3px); }
+
     .section-inner, .about-grid, .about-txt, .about-stats { max-width: 100%; min-width: 0; }
     .stat-num { word-break: break-word; }
     .nav-logo-img { height: 46px; width: auto; display: block; }
@@ -684,13 +694,23 @@
         <p class="footer-tagline">Custom curtains, without the confusion. One home visit. One all-inclusive price. Delivered in 10 days. Trusted since 1980.</p>
       </div>
       <div>
-        <div class="footer-head">Our Service</div>
-        <ul class="footer-links">
-          <li><a href="#solution">Free Home Consultation</a></li>
-          <li><a href="#solution">3D Room Preview</a></li>
-          <li><a href="#solution">In-House Manufacturing</a></li>
-          <li><a href="#solution">Professional Installation</a></li>
-        </ul>
+        <div>
+  <div class="footer-head">Get In Touch</div>
+  <a href="mailto:customercare@biancahome.in" class="footer-email">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7L22 6"/></svg>
+    customercare@biancahome.in
+  </a>
+
+  <div class="footer-head" style="margin-top:1.8rem;">Follow Us</div>
+  <div class="footer-socials">
+    <a href="https://www.instagram.com/bianca_home_decor/?hl=en" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s0 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58 0-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.21 15.6 2.2 15.2 2.2 12s0-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.21 8.8 2.2 12 2.2Zm0 1.62c-3.15 0-3.52.01-4.76.07-1.15.05-1.77.24-2.19.4-.55.22-.94.47-1.35.88-.41.41-.66.8-.88 1.35-.16.42-.35 1.04-.4 2.19-.06 1.24-.07 1.61-.07 4.76s.01 3.52.07 4.76c.05 1.15.24 1.77.4 2.19.22.55.47.94.88 1.35.41.41.8.66 1.35.88.42.16 1.04.35 2.19.4 1.24.06 1.61.07 4.76.07s3.52-.01 4.76-.07c1.15-.05 1.77-.24 2.19-.4.55-.22.94-.47 1.35-.88.41-.41.66-.8.88-1.35.16-.42.35-1.04.4-2.19.06-1.24.07-1.61.07-4.76s-.01-3.52-.07-4.76c-.05-1.15-.24-1.77-.4-2.19-.22-.55-.47-.94-.88-1.35-.41-.41-.8-.66-1.35-.88-.42-.16-1.04-.35-2.19-.4-1.24-.06-1.61-.07-4.76-.07Zm0 2.76a5.42 5.42 0 1 1 0 10.84 5.42 5.42 0 0 1 0-10.84Zm0 8.94a3.52 3.52 0 1 0 0-7.04 3.52 3.52 0 0 0 0 7.04Zm6.9-9.15a1.27 1.27 0 1 1-2.53 0 1.27 1.27 0 0 1 2.53 0Z"/></svg></a>
+    <a href="https://www.facebook.com/biancahomedecor/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.69.24 2.69.24v2.97h-1.52c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07Z"/></svg></a>
+    <a href="https://www.youtube.com/c/BiancaHomeDecor/videos" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.12-2.12C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.53A3 3 0 0 0 .5 6.2C0 8.07 0 12 0 12s0 3.93.5 5.8a3 3 0 0 0 2.12 2.12c1.88.53 9.38.53 9.38.53s7.5 0 9.38-.53a3 3 0 0 0 2.12-2.12C24 15.93 24 12 24 12s0-3.93-.5-5.8ZM9.55 15.57V8.43L15.82 12l-6.27 3.57Z"/></svg></a>
+    <a href="https://www.youtube.com/c/BiancaHomeDecor/videos" target="_blank" rel="noopener" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.46l8.6-9.83L0 1.15h7.59l5.24 6.93 6.07-6.93Zm-1.29 19.5h2.04L6.48 3.24H4.3L17.61 20.65Z"/></svg></a>
+    <a href="https://in.pinterest.com/biancahome/_saved/" target="_blank" rel="noopener" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.08 3.16 9.42 7.62 11.17-.1-.95-.2-2.4.04-3.44.22-.93 1.4-5.95 1.4-5.95s-.36-.72-.36-1.78c0-1.66.97-2.9 2.17-2.9 1.02 0 1.52.77 1.52 1.69 0 1.03-.66 2.57-1 4-.28 1.2.6 2.18 1.78 2.18 2.14 0 3.78-2.26 3.78-5.51 0-2.88-2.07-4.9-5.02-4.9-3.42 0-5.43 2.56-5.43 5.21 0 1.03.4 2.14.9 2.74.1.12.11.22.08.34l-.33 1.36c-.05.22-.18.27-.41.16-1.53-.71-2.48-2.94-2.48-4.74 0-3.86 2.8-7.4 8.08-7.4 4.24 0 7.54 3.02 7.54 7.06 0 4.21-2.66 7.6-6.34 7.6-1.24 0-2.4-.64-2.8-1.4l-.76 2.9c-.27 1.06-1.01 2.39-1.51 3.2 1.14.35 2.34.54 3.6.54 6.63 0 12-5.37 12-12S18.63 0 12 0Z"/></svg></a>
+    <a href="https://www.linkedin.com/company/bianca-home/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.55V9h3.57v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg></a>
+  </div>
+</div>
       </div>
       <div>
         <div class="footer-head">Company</div>
