@@ -467,6 +467,20 @@
     .sticky-wa:hover { background: #1da851; }
     .sticky-wa svg { width: 26px; height: 26px; fill: #fff; }
     @media (max-width: 820px) { .sticky-bar { display: flex; } body { padding-bottom: 3rem; } }
+    .privacy-screen { position: fixed; inset: 0; z-index: 9500; background: var(--cream); overflow-y: auto; opacity: 0; pointer-events: none; transition: opacity 0.4s var(--ease); cursor: auto; }
+.privacy-screen.open { opacity: 1; pointer-events: all; }
+.privacy-bar { position: sticky; top: 0; display: flex; align-items: center; justify-content: space-between; padding: 1rem 5rem; background: #A31535; border-bottom: 3px solid #B8960C; }
+.privacy-bar img { height: 42px; }
+.privacy-back { font-family: var(--sans); font-size: 0.58rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; padding: 0.65rem 1.7rem; background: #B8960C; color: #fff; border: none; cursor: pointer; }
+.privacy-body { max-width: 880px; margin: 0 auto; padding: 3.5rem 5rem 5rem; }
+.privacy-body h1 { font-size: clamp(2rem,4vw,3.2rem); color: var(--charcoal); font-weight: 600; margin-bottom: 1.5rem; }
+.privacy-body h1 em { font-style: italic; color: var(--burgundy); }
+.privacy-body h2 { font-size: 1.4rem; color: var(--charcoal); margin: 2.2rem 0 0.4rem; }
+.privacy-body h2 em { font-style: italic; color: var(--burgundy); }
+.privacy-body .divider-line { margin: 0.6rem 0 1rem; }
+.privacy-body p { margin-bottom: 1rem; }
+.privacy-body a { color: var(--burgundy); }
+@media (max-width: 820px){ .privacy-bar{ padding: 0.9rem 1.5rem; } .privacy-body{ padding: 2.5rem 1.5rem 3.5rem; } }
   </style>
 </head>
 <body>
@@ -718,7 +732,7 @@
           <li><a href="#about">About Bianca</a></li>
           <li><a href="#testimonials">Customer Stories</a></li>
           <li><a href="https://biancahome.com/collections/designer-living-bedroom-room-cotton-curtain-online-for-home/curtain">Visit Our Store</a></li>
-          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#" onclick="openPrivacy(event)">Privacy Policy</a></li>
         </ul>
       </div>
     </div>
@@ -981,6 +995,8 @@
       const statsEl = document.querySelector('.about-stats');
       if (statsEl) obs.observe(statsEl);
     }
+    function openPrivacy(e){ if(e) e.preventDefault(); document.getElementById('privacyScreen').classList.add('open'); document.body.style.overflow='hidden'; }
+function closePrivacy(){ document.getElementById('privacyScreen').classList.remove('open'); document.body.style.overflow=''; }
   </script>
 
   <!-- ═══════ THANK YOU POPUP ═══════ -->
@@ -993,6 +1009,49 @@
       <button class="popup-btn" onclick="closePopup()">Done</button>
     </div>
   </div>
+
+  <div class="privacy-screen" id="privacyScreen">
+  <div class="privacy-bar">
+    <img src="CC LP Images (1)/BIANCA LOGO 2025 (1).png" alt="Bianca" />
+    <button class="privacy-back" onclick="closePrivacy()">← Back</button>
+  </div>
+  <div class="privacy-body">
+    <span class="eyebrow">Bianca Curtains</span>
+    <span class="divider-line"></span>
+    <h1>Privacy <em>Policy</em></h1>
+    <p style="font-style:italic;color:var(--light-stone);">Note: Our privacy policy is subject to change at any time without notice. Please review this policy periodically.</p>
+
+    <p>We highly value the trust you place in Bianca. That's why we insist upon the highest standards for secure transactions and customer information privacy.</p>
+
+    <h2>Data We <em>Collect</em></h2><span class="divider-line"></span>
+    <p>We collect your personal identifiable information (name, email address, phone number, etc.) when you set up a free account with Bianca. Our primary goal is to provide you a safe, efficient, smooth and customized experience. While you can browse some sections without registering, certain activities (such as placing an order) do require registration.</p>
+    <p>We use your contact information to send you offers based on your previous orders and interests, to provide services you request, resolve disputes, troubleshoot problems, promote a safe service, measure consumer interest, customize your experience, detect fraud, and enforce our terms. We will provide you the ability to opt-out of marketing uses.</p>
+    <p>We collect and analyse demographic and profile data about users' activity. We use your IP address to diagnose server problems, administer the website, and gather broad demographic information. We may occasionally ask you to complete optional online surveys.</p>
+
+    <h2>Cookies</h2><span class="divider-line"></span>
+    <p>A "cookie" is a small piece of information stored by a Web server on a browser so it can be later read back. Bianca places both permanent and temporary cookies on your device. Bianca's cookies do not contain any of your personally identifiable information.</p>
+
+    <h2>Sharing of <em>Personal Information</em></h2><span class="divider-line"></span>
+    <p>We may share personal information with our corporate entities and affiliates to detect and prevent fraud, correlate multiple accounts to prevent abuse, and facilitate co-branded services you request. Those entities may not market to you unless you explicitly opt-in.</p>
+    <p>We may disclose personal information if required by law, or in good faith to respond to subpoenas, court orders, or legal process; to enforce our Terms or Privacy Policy; or to protect the rights, property or safety of our users or the public.</p>
+    <p>Should Bianca merge with or be acquired by another business entity, your personal information may be shared, and that entity will be required to follow this privacy policy.</p>
+
+    <h2>Links to <em>Other Sites</em></h2><span class="divider-line"></span>
+    <p>Our site links to other websites that may collect personally identifiable information about you. Bianca is not responsible for the privacy practices or content of those linked websites.</p>
+
+    <h2>Security</h2><span class="divider-line"></span>
+    <p>To protect against loss, misuse and alteration of information, we have physical, electronic and managerial procedures in place. Whenever you change or access your account information, we offer the use of a secure server. We adhere to strict security guidelines to protect against unauthorized access.</p>
+
+    <h2>Opting Out of <em>Communications</em></h2><span class="divider-line"></span>
+    <p>Bianca lets all users opt-out of non-essential (promotional, marketing) communications after setting up an account. To remove your contact information from all lists and newsletters, login at <a href="https://www.biancahome.com" target="_blank" rel="noopener">www.biancahome.com</a> and edit your Newsletter Subscriptions.</p>
+
+    <h2>Advertising</h2><span class="divider-line"></span>
+    <p>We use third-party advertising companies to serve ads. These companies may use information (not including your name, address, email, or phone number) about your visits to this and other websites to provide relevant advertisements.</p>
+
+    <h2>Questions</h2><span class="divider-line"></span>
+    <p>Questions regarding this statement should be directed to: <a href="mailto:info@biancahome.in">info@biancahome.in</a></p>
+  </div>
+</div>
 
   <!-- ═══════ STICKY BAR (mobile) ═══════ -->
   <div class="sticky-bar">
