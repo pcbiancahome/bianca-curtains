@@ -195,7 +195,7 @@
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
     /* ── SECTION COMMONS ── */
-    .section { padding: 7rem 5rem; }
+    .section { padding: 4rem 5rem; }
     .section-inner { max-width: 1120px; margin: 0 auto; }
 
     .sec-header { margin-bottom: 3rem; }
@@ -297,6 +297,44 @@
     .stat-num { font-family: var(--serif); font-size: 2.4rem; color: var(--burgundy); display: block; line-height: 1; }
     .stat-lbl { font-size: 0.58rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--light-stone); margin-top: 0.3rem; display: block; }
 
+    /* ── CLIENT LOGO TICKER ── */
+    #clients { background: var(--white); padding: 4rem 0; overflow: hidden; }
+    .ticker-outer { position: relative; width: 100%; overflow: hidden; }
+    .ticker-outer::before, .ticker-outer::after {
+      content: ''; position: absolute; top: 0; bottom: 0; width: 90px; z-index: 2; pointer-events: none;
+    }
+    .ticker-outer::before { left: 0; background: linear-gradient(to right, var(--white), transparent); }
+    .ticker-outer::after  { right: 0; background: linear-gradient(to left, var(--white), transparent); }
+
+    .ticker-track {
+      display: flex; align-items: center; gap: 3.5rem;
+      width: max-content;
+      animation: ticker-scroll 35s linear infinite;
+    }
+    .ticker-outer:hover .ticker-track { animation-play-state: paused; }
+
+    .ticker-logo { flex-shrink: 0; height: 48px; display: flex; align-items: center; justify-content: center; }
+    .ticker-logo img {
+      height: 100%; max-width: 140px; width: auto; object-fit: contain;
+      filter: grayscale(100%) contrast(1.1);
+      opacity: 0.65;
+      transition: filter 0.4s, opacity 0.4s, transform 0.4s;
+    }
+    .ticker-logo:hover img { filter: grayscale(0%); opacity: 1; transform: scale(1.08); }
+
+    @keyframes ticker-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    @media (max-width: 820px) {
+      #clients { padding: 2.5rem 0; }
+      .ticker-track { gap: 2.2rem; animation-duration: 22s; }
+      .ticker-logo { height: 36px; }
+      .ticker-logo img { max-width: 100px; }
+      .ticker-outer::before, .ticker-outer::after { width: 50px; }
+    }
+
     /* ── TESTIMONIALS ── */
     #testimonials { background: var(--burgundy); }
     .testi-header .eyebrow { color: var(--gold-lt); }
@@ -389,7 +427,7 @@
       .nav-links, .nav-cta { display: none; }
       .hamburger { display: flex; }
       .nav-spacer { height: 0; }
-      .section { padding: 3rem 1.5rem; }
+      .section { padding: 2.5rem 1.5rem; }
       #contact { padding-top: 2rem; }
       .sec-header { margin-bottom: 2rem; }
       .hero-content { padding: 0 1.5rem; }
@@ -637,6 +675,53 @@
     </div>
   </section>
 
+  <!-- ═══════ CLIENT LOGOS TICKER ═══════ -->
+  <section id="clients">
+    <div class="ticker-outer">
+      <div class="ticker-track">
+        <!-- Set 1 of 18 logos — replace src path below with your actual PNG files -->
+        <div class="ticker-logo"><img src="" alt="Client 1" /></div>
+        <div class="ticker-logo"><img src="Client Logo/blinkit.png" alt="Client 2" /></div>
+        <div class="ticker-logo"><img src="Client Logo/Swiggy.png" alt="Client 3" /></div>
+        <div class="ticker-logo"><img src="Client Logo/reliance.png" alt="Client 4" /></div>
+        <div class="ticker-logo"><img src="Client Logo/Nykaa.gif" alt="Client 5" /></div>
+        <div class="ticker-logo"><img src="Client Logo/Shoppers Stop.png" alt="Client 6" /></div>
+        <div class="ticker-logo"><img src="Client Logo/reliance.png" alt="Client 7" /></div>
+        <div class="ticker-logo"><img src="Client Logo/reliance.png" alt="Client 8" /></div>
+        <div class="ticker-logo"><img src="Client Logo/reliance.png" alt="Client 9" /></div>
+        <div class="ticker-logo"><img src="Client Logo/reliance.png" alt="Client 10" /></div>
+        <div class="ticker-logo"><img src="Client Logo/reliance.png" alt="Client 11" /></div>
+        <div class="ticker-logo"><img src="Client Logo/reliance.png" alt="Client 12" /></div>
+        <div class="ticker-logo"><img src="Client Logo/reliance.png" alt="Client 13" /></div>
+        <div class="ticker-logo"><img src="Client Logo/reliance.png" alt="Client 14" /></div>
+        <div class="ticker-logo"><img src="Client Logo/reliance.png" alt="Client 15" /></div>
+        <div class="ticker-logo"><img src="Client Logo/reliance.png" alt="Client 16" /></div>
+        <div class="ticker-logo"><img src="Client Logo/reliance.png" alt="Client 17" /></div>
+        <div class="ticker-logo"><img src="Client Logo/reliance.png" alt="Client 18" /></div>
+
+        <!-- Set 2 (DUPLICATE of above, exact same order) — needed for seamless infinite loop. Do not delete. -->
+        <div class="ticker-logo"><img src="CC LP Images (1)/clients/logo-01.png" alt="Client 1" /></div>
+        <div class="ticker-logo"><img src="CC LP Images (1)/clients/logo-02.png" alt="Client 2" /></div>
+        <div class="ticker-logo"><img src="CC LP Images (1)/clients/logo-03.png" alt="Client 3" /></div>
+        <div class="ticker-logo"><img src="CC LP Images (1)/clients/logo-04.png" alt="Client 4" /></div>
+        <div class="ticker-logo"><img src="CC LP Images (1)/clients/logo-05.png" alt="Client 5" /></div>
+        <div class="ticker-logo"><img src="CC LP Images (1)/clients/logo-06.png" alt="Client 6" /></div>
+        <div class="ticker-logo"><img src="CC LP Images (1)/clients/logo-07.png" alt="Client 7" /></div>
+        <div class="ticker-logo"><img src="CC LP Images (1)/clients/logo-08.png" alt="Client 8" /></div>
+        <div class="ticker-logo"><img src="CC LP Images (1)/clients/logo-09.png" alt="Client 9" /></div>
+        <div class="ticker-logo"><img src="CC LP Images (1)/clients/logo-10.png" alt="Client 10" /></div>
+        <div class="ticker-logo"><img src="CC LP Images (1)/clients/logo-11.png" alt="Client 11" /></div>
+        <div class="ticker-logo"><img src="CC LP Images (1)/clients/logo-12.png" alt="Client 12" /></div>
+        <div class="ticker-logo"><img src="CC LP Images (1)/clients/logo-13.png" alt="Client 13" /></div>
+        <div class="ticker-logo"><img src="CC LP Images (1)/clients/logo-14.png" alt="Client 14" /></div>
+        <div class="ticker-logo"><img src="CC LP Images (1)/clients/logo-15.png" alt="Client 15" /></div>
+        <div class="ticker-logo"><img src="CC LP Images (1)/clients/logo-16.png" alt="Client 16" /></div>
+        <div class="ticker-logo"><img src="CC LP Images (1)/clients/logo-17.png" alt="Client 17" /></div>
+        <div class="ticker-logo"><img src="CC LP Images (1)/clients/logo-18.png" alt="Client 18" /></div>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══════ TESTIMONIALS ═══════ -->
   <section id="testimonials" class="section">
     <div class="section-inner">
@@ -721,7 +806,7 @@
     <a href="https://www.instagram.com/bianca_home_decor/?hl=en" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s0 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58 0-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.21 15.6 2.2 15.2 2.2 12s0-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.21 8.8 2.2 12 2.2Zm0 1.62c-3.15 0-3.52.01-4.76.07-1.15.05-1.77.24-2.19.4-.55.22-.94.47-1.35.88-.41.41-.66.8-.88 1.35-.16.42-.35 1.04-.4 2.19-.06 1.24-.07 1.61-.07 4.76s.01 3.52.07 4.76c.05 1.15.24 1.77.4 2.19.22.55.47.94.88 1.35.41.41.8.66 1.35.88.42.16 1.04.35 2.19.4 1.24.06 1.61.07 4.76.07s3.52-.01 4.76-.07c1.15-.05 1.77-.24 2.19-.4.55-.22.94-.47 1.35-.88.41-.41.66-.8.88-1.35.16-.42.35-1.04.4-2.19.06-1.24.07-1.61.07-4.76s-.01-3.52-.07-4.76c-.05-1.15-.24-1.77-.4-2.19-.22-.55-.47-.94-.88-1.35-.41-.41-.8-.66-1.35-.88-.42-.16-1.04-.35-2.19-.4-1.24-.06-1.61-.07-4.76-.07Zm0 2.76a5.42 5.42 0 1 1 0 10.84 5.42 5.42 0 0 1 0-10.84Zm0 8.94a3.52 3.52 0 1 0 0-7.04 3.52 3.52 0 0 0 0 7.04Zm6.9-9.15a1.27 1.27 0 1 1-2.53 0 1.27 1.27 0 0 1 2.53 0Z"/></svg></a>
     <a href="https://www.facebook.com/biancahomedecor/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.69.24 2.69.24v2.97h-1.52c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07Z"/></svg></a>
     <a href="https://www.youtube.com/c/BiancaHomeDecor/videos" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.12-2.12C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.53A3 3 0 0 0 .5 6.2C0 8.07 0 12 0 12s0 3.93.5 5.8a3 3 0 0 0 2.12 2.12c1.88.53 9.38.53 9.38.53s7.5 0 9.38-.53a3 3 0 0 0 2.12-2.12C24 15.93 24 12 24 12s0-3.93-.5-5.8ZM9.55 15.57V8.43L15.82 12l-6.27 3.57Z"/></svg></a>
-    <a href="https://www.youtube.com/c/BiancaHomeDecor/videos" target="_blank" rel="noopener" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.46l8.6-9.83L0 1.15h7.59l5.24 6.93 6.07-6.93Zm-1.29 19.5h2.04L6.48 3.24H4.3L17.61 20.65Z"/></svg></a>
+    <a href="https://x.com/biancahomedecor" target="_blank" rel="noopener" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.46l8.6-9.83L0 1.15h7.59l5.24 6.93 6.07-6.93Zm-1.29 19.5h2.04L6.48 3.24H4.3L17.61 20.65Z"/></svg></a>
     <a href="https://in.pinterest.com/biancahome/_saved/" target="_blank" rel="noopener" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.08 3.16 9.42 7.62 11.17-.1-.95-.2-2.4.04-3.44.22-.93 1.4-5.95 1.4-5.95s-.36-.72-.36-1.78c0-1.66.97-2.9 2.17-2.9 1.02 0 1.52.77 1.52 1.69 0 1.03-.66 2.57-1 4-.28 1.2.6 2.18 1.78 2.18 2.14 0 3.78-2.26 3.78-5.51 0-2.88-2.07-4.9-5.02-4.9-3.42 0-5.43 2.56-5.43 5.21 0 1.03.4 2.14.9 2.74.1.12.11.22.08.34l-.33 1.36c-.05.22-.18.27-.41.16-1.53-.71-2.48-2.94-2.48-4.74 0-3.86 2.8-7.4 8.08-7.4 4.24 0 7.54 3.02 7.54 7.06 0 4.21-2.66 7.6-6.34 7.6-1.24 0-2.4-.64-2.8-1.4l-.76 2.9c-.27 1.06-1.01 2.39-1.51 3.2 1.14.35 2.34.54 3.6.54 6.63 0 12-5.37 12-12S18.63 0 12 0Z"/></svg></a>
     <a href="https://www.linkedin.com/company/bianca-home/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.55V9h3.57v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg></a>
   </div>
@@ -732,7 +817,7 @@
         <ul class="footer-links">
           <li><a href="#about">About Bianca</a></li>
           <li><a href="#testimonials">Customer Stories</a></li>
-          <li><a href="https://biancahome.com/collections/designer-living-bedroom-room-cotton-curtain-online-for-home/curtain">Visit Our Store</a></li>
+          <li><a href="#about">Visit Our Store</a></li>
           <li><a href="#" onclick="openPrivacy(event)">Privacy Policy</a></li>
         </ul>
       </div>
